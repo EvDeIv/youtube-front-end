@@ -1,0 +1,8 @@
+.wrapper {
+	@apply relative inline-flex;
+
+	.form {
+		@apply block shadow-lg p-4 absolute right-2 animate-scaledIn w-40 z-20 bg-white rounded-md;
+		top: calc(100% + 1.4rem);
+	}
+}

@@ -12,7 +12,6 @@ import { useAuth } from './../../../hooks/useAuth'
 
 const Home: FC = () => {
 	const { user } = useAuth()
-	console.log(user)
 
 	return (
 		<Layout title='Youtube v2.0 - Best videos'>

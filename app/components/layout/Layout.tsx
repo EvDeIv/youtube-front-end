@@ -1,24 +1,25 @@
+import cn from 'classnames'
+import Head from 'next/head'
 import { FC, PropsWithChildren } from 'react'
 
-import Sidebar from './sidebar/Sidebar'
+import { useAuth } from '@/hooks/useAuth'
+
 import Header from './header/Header'
-import WeaklyFutured from './../pages/home/weakly-featured/WeaklyFutured'
-import Line from './../ui/Line'
-import Recommended from './../pages/home/recommended/Recommended'
-import RightSide from './right-side/RightSide'
-import Head from 'next/head'
+import Sidebar from './sidebar/Sidebar'
 
 const Layout: FC<PropsWithChildren<{ title: string }>> = ({
 	children,
 	title
 }) => {
+	const { user } = useAuth()
+
 	return (
 		<>
 			<Head>
 				<title>{title}</title>
 				<main id='youtube_main'>
 					<Sidebar />
-					<section className='content'>
+					<section className={cn('content', { 'content-full': !user })}>
 						<Header />
 						<div className='content-wrapper'>{children}</div>
 					</section>

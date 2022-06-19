@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 
 import AuthProvider from '../app/providers/AuthProvider'
 
-import '../app/assets/styles/old-styles.sass'
+import '../app/assets/styles/old-styles.scss'
 import '../app/assets/styles/globals.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {

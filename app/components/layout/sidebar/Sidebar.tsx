@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-
-import logoImg from '../../../assets/img/common/logo.png'
-import avatarImg from '../../../assets/img/main/avatar.jpg'
+import { useAuth } from '../../../hooks/useAuth'
 
 const Sidebar: FC = () => {
-	return (
+	const { user } = useAuth()
+
+	return user ? (
 		<section className='sidebar'>
 			<Link href='/'>
 				<a className='logo' rel='noreferrer'>
@@ -122,7 +122,7 @@ const Sidebar: FC = () => {
 			</a>
 			<div className='copy'>© 2020 Youtube, LLC</div>
 		</section>
-	)
+	) : null
 }
 
 export default Sidebar
