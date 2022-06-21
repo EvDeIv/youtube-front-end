@@ -1,8 +1,5 @@
 module.exports = {
-	content: [
-		'./pages/**/*.{js,ts,jsx,tsx}',
-		'./app/**/*.{js,ts,jsx,tsx}',
-	],
+	content: ['./pages/**/*.{js,ts,jsx,tsx}', './app/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
 			colors: {
@@ -29,7 +26,7 @@ module.exports = {
 			},
 			animation: {
 				fade: 'fade .5s ease-in-out',
-				scaledIn: 'scaledIn .35s ease-in-out'
+				scaleIn: 'scaleIn .35s ease-in-out'
 			}
 		}
 	},

@@ -17,14 +17,14 @@ const Layout: FC<PropsWithChildren<{ title: string }>> = ({
 		<>
 			<Head>
 				<title>{title}</title>
-				<main id='youtube_main'>
-					<Sidebar />
-					<section className={cn('content', { 'content-full': !user })}>
-						<Header />
-						<div className='content-wrapper'>{children}</div>
-					</section>
-				</main>
 			</Head>
+			<main id='youtube_main'>
+				<Sidebar />
+				<section className={cn('content', { 'content-full': !user })}>
+					<Header />
+					<div className='content-wrapper'>{children}</div>
+				</section>
+			</main>
 		</>
 	)
 }

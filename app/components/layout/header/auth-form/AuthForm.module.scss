@@ -2,7 +2,12 @@
 	@apply relative inline-flex;
 
 	.form {
-		@apply block shadow-lg p-4 absolute right-2 animate-scaledIn w-40 z-20 bg-white rounded-md;
+		@apply block shadow-lg p-4 absolute right-2 animate-scaleIn w-44 z-20 bg-white rounded-md;
 		top: calc(100% + 1.4rem);
+
+		.register {
+			@apply opacity-40 block text-center w-full;
+			font-size: 0.7rem;
+		}
 	}
 }
