@@ -1,10 +1,15 @@
-import { FC } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
-import { useAuth } from '../../../hooks/useAuth'
+import Link from 'next/link'
+import { FC } from 'react'
+
+import { defaultValueAuthState } from '@/providers/AuthProvider'
+
+import { AuthService } from '@/services/auth/auth.service'
+
+import { useAuth } from '@/hooks/useAuth'
 
 const Sidebar: FC = () => {
-	const { user } = useAuth()
+	const { user, setData } = useAuth()
 
 	return user ? (
 		<section className='sidebar'>
@@ -117,9 +122,15 @@ const Sidebar: FC = () => {
 				<p>Light On</p>
 			</div>
 
-			<a href='#' id='logout_btn'>
+			<button
+				id='logout_btn'
+				onClick={() => {
+					AuthService.logout()
+					setData && setData(defaultValueAuthState)
+				}}
+			>
 				Logout
-			</a>
+			</button>
 			<div className='copy'>© 2020 Youtube, LLC</div>
 		</section>
 	) : null

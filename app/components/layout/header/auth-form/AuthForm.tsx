@@ -1,12 +1,15 @@
 import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FaUserCircle } from 'react-icons/fa'
+import { useMutation } from 'react-query'
 
 import Button from '@/components/ui/Button/Button'
 import Field from '@/components/ui/Field/Field'
 
+import { useAuth } from '@/hooks/useAuth'
 import { useOutside } from '@/hooks/useOutside'
 
+import { AuthService } from './../../../../services/auth/auth.service'
 import stylesIcons from './../icons/IconsRight.module.scss'
 import styles from './AuthForm.module.scss'
 import { IAuthFileds } from './auth-form.interface'
@@ -25,8 +28,21 @@ const AuthForm: FC = () => {
 		mode: 'onChange'
 	})
 
+	const { setData } = useAuth()
+
+	const { mutate: login } = useMutation(
+		'login',
+		(data: IAuthFileds) => AuthService.login(data.email, data.password),
+		{
+			onSuccess(data) {
+				setData && setData(data)
+			}
+		}
+	)
+
 	const onSubmit: SubmitHandler<IAuthFileds> = (data) => {
-		if (type === 'login') console.log('login', data.email)
+		console.log(data);
+		if (type === 'login') login(data)
 		else if (type === 'register') console.log('register', data.email)
 	}
 
@@ -61,6 +77,7 @@ const AuthForm: FC = () => {
 						})}
 						placeholder='Password'
 						error={errors.password}
+						type={'password'}
 					/>
 					<div className={'mt-5 mb-1 text-center'}>
 						<Button onClick={() => setType('login')}>Login</Button>
