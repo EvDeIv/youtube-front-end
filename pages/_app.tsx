@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import '../app/assets/styles/globals.scss'
 import '../app/assets/styles/old-styles.scss'
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<AuthProvider>
 				<Component {...pageProps} />
 			</AuthProvider>
+			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
 	)
 }
